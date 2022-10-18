@@ -1,0 +1,42 @@
+## YAML Template.
+---
+server:
+    port: 8084
+spring:
+    application:
+        name: product-service
+    datasource:
+        driverClassName: org.postgresql.Driver
+
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/ProductCatalog
+        username: postgres
+        
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                generate_statistics: false
+                jdbc:
+                    batch_size: 10
+                order_inserts: true
+                order_updates: true
+        show-sql: true
+        format_sql: false
+logging:
+    level:
+        org:
+            springframework:
+                jdbc:
+                    core:
+                        JdbcTemplate: DEBUG
+                        StatementCreatorUtils: TRACE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: "env,beans"

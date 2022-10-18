@@ -1,0 +1,45 @@
+spring:
+    application:
+        name: api-gateway
+    cloud:
+        gateway:
+            globalcors:
+                corsConfigurations:
+                '[/**]':
+                allowedOrigins: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+eureka:
+    client:
+        eureka-server-d-n-s-name: my.dns
+        eureka-service-url-Context: eureka
+        fetch-registry: false
+        region: ap-south-1b
+        register-with-eureka: false
+        use-dns-for-fetching-service-urls: true
+    datacenter: cloud
+ribbon:
+    eureka:
+        enabled: false
+server:
+    port: 8765
+zuul:
+    host:
+        connect-timeout-millis: 60000
+        socket-timeout-millis: 240000
+    routes:
+        order-service:
+            url: 'http://localhost:8088'
+#            url: 'http://13.235.16.244:8088'
+        catalog-service:
+#            url: 'http://13.235.16.244:8084'
+            url: 'http://localhost:8084'
+        user-service:
+            url: 'http://localhost:8082'
+#            url: 'http://3.108.59.97:8082'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: "env,beans"

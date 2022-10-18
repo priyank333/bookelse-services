@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CustomerOrderManagementServiceApplication<customer-order-management-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.coms.CustomerOrderManagementServiceApplication",
+            "projectName": "customer-order-management-service",
+            "args": ""
+        }
+    ]
+}

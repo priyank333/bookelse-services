@@ -1,0 +1,42 @@
+## YAML Template.
+---
+server:
+    port: 8088
+spring:
+    application:
+        name: order-service
+    datasource:
+        driverClassName: org.postgresql.Driver
+
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/CustomerOrders
+        username: postgres
+        
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                generate_statistics: false
+                jdbc:
+                    batch_size: 10
+                order_inserts: true
+                order_updates: true
+                format_sql: false
+        show-sql: true
+logging:
+    level:
+        org:
+            springframework:
+                jdbc:
+                    core:
+                        JdbcTemplate: DEBUG
+                        StatementCreatorUtils: TRACE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: "env,beans"
